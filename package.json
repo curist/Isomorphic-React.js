@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "NODE_PATH=. nodemon server.js & gulp",
+    "start-dev": "NODE_PATH=. nodemon -e js,jsx server.js & gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,12 +12,11 @@
   "devDependencies": {
     "reactify": "^0.13.1",
     "gulp": "^3.6.2",
-    "browserify": "^3.46.0",
-    "vinyl-source-stream": "^0.1.1",
-    "gulp-clean": "^0.2.4"
+    "gulp-clean": "^0.2.4",
+    "gulp-browserify": "^0.5.0"
   },
   "dependencies": {
-    "express": "^4.1.1",
+    "express": "^3.5.2",
     "node-jsx": "^0.10.0",
     "envify": "^1.2.1",
     "react": "^0.10.0"

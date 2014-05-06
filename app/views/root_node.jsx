@@ -8,7 +8,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div>
-        root node yo!!
+        root node from { this.props.side }
         <Foo/>
       </div>
     );

@@ -1,21 +1,19 @@
 var gulp = require('gulp');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
+var browserify = require('gulp-browserify');
 var reactify = require('reactify');
 var clean = require('gulp-clean');
 
 gulp.task('browserify', function() {
-  return browserify({
-    entries: ['./app/front_entry.js'],
-    extensions: ['.jsx'],
-    transform: [reactify],
-    paths: ['./', './node_modules']
-  })
-  .bundle()
-  .on('error', function(e) { console.log(e); })
-  .pipe(source('bundle.js'))
-  .pipe(gulp.dest('public/js'))
-  ;
+  return gulp.src('./app/front_entry.js', {read: false})
+    .pipe(browserify({
+      transform: ['reactify'],
+      extensions: ['.jsx'],
+      paths: ['./', './node_modules']
+    }))
+    .on('error', function(err){
+      console.log(err);
+    })
+    .pipe(gulp.dest('public/js'));
 });
 
 

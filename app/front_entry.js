@@ -1,7 +1,10 @@
 var React = require('react');
 var RootNode = require('app/views/root_node');
 
-console.log(
-  React.renderComponentToString(RootNode())
+React.renderComponent(
+  RootNode({side: 'client'}),
+  document.getElementById('container')
 );
+
+
 
