@@ -1,0 +1,26 @@
+{
+  "name": "gulp-sample",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-dev": "NODE_PATH=. nodemon server.js ; gulp",
+    "preinstall": "sudo npm i -g gulp nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "reactify": "^0.13.1",
+    "gulp": "^3.6.2",
+    "gulp-nodemon": "^1.0.2",
+    "browserify": "^3.46.0",
+    "vinyl-source-stream": "^0.1.1"
+  },
+  "dependencies": {
+    "express": "^4.1.1",
+    "node-jsx": "^0.10.0",
+    "envify": "^1.2.1",
+    "react": "^0.10.0"
+  }
+}
