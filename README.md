@@ -5,5 +5,5 @@ npm install -g gulp nodemon
 
 # Start Developing
 ``` sh
-gulp
+npm run start-dev
 ```
