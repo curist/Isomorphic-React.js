@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "NODE_PATH=. nodemon server.js ; gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,7 +12,9 @@
     "reactify": "^0.13.1",
     "gulp": "^3.6.2",
     "browserify": "^3.46.0",
-    "vinyl-source-stream": "^0.1.1"
+    "vinyl-source-stream": "^0.1.1",
+    "gulp-clean": "^0.2.4",
+    "gulp-nodemon": "^1.0.2"
   },
   "dependencies": {
     "express": "^4.1.1",
