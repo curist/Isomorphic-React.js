@@ -6,6 +6,10 @@ var express = require('express');
 var app = express();
 var url = require('url');
 
+app.configure('development', function() {
+  app.use(require('connect-livereload')());
+});
+
 app.use(express.compress());
 app.use(express.static(__dirname + '/public'));
 

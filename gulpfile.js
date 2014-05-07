@@ -4,6 +4,7 @@ var browserify = require('gulp-browserify');
 var reactify = require('reactify');
 var clean = require('gulp-clean');
 var notify = require('gulp-notify');
+var livereload = require('gulp-livereload');
 
 gulp.task('browserify', function() {
   return gulp.src('./app/front_entry.js', {read: false})
@@ -15,9 +16,9 @@ gulp.task('browserify', function() {
     .on('error', gutil.log)
     .on('error', notify.onError({}))
     .pipe(gulp.dest('public/js'))
+    .pipe(livereload())
     .pipe(notify('browserified'));
 });
-
 
 gulp.task('clean', function() {
   return gulp.src('public', {read: false}).pipe(clean());

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "NODE_PATH=. nodemon -e js,jsx server.js & gulp",
+    "start-dev": "NODE_PATH=. NODE_ENV=development nodemon -e js,jsx server.js & gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,7 +15,9 @@
     "gulp-clean": "^0.2.4",
     "gulp-browserify": "^0.5.0",
     "gulp-notify": "^1.2.5",
-    "gulp-util": "^2.2.14"
+    "gulp-util": "^2.2.14",
+    "gulp-livereload": "^1.4.2",
+    "connect-livereload": "^0.4.0"
   },
   "dependencies": {
     "express": "^3.5.2",
