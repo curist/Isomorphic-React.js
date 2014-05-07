@@ -1,19 +1,21 @@
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var browserify = require('gulp-browserify');
 var reactify = require('reactify');
 var clean = require('gulp-clean');
+var notify = require('gulp-notify');
 
 gulp.task('browserify', function() {
   return gulp.src('./app/front_entry.js', {read: false})
     .pipe(browserify({
       transform: ['reactify'],
-      extensions: ['.jsx'],
+      extensions: ['.js', '.jsx'],
       paths: ['./', './node_modules']
     }))
-    .on('error', function(err){
-      console.log(err);
-    })
-    .pipe(gulp.dest('public/js'));
+    .on('error', gutil.log)
+    .on('error', notify.onError({}))
+    .pipe(gulp.dest('public/js'))
+    .pipe(notify('browserified'));
 });
 
 
