@@ -1,5 +1,14 @@
 /** @jsx React.DOM */
 
+(function muteUsefulLogs(do_it) {
+  if(do_it && window.console) {
+    window.console.warn = dummy;
+    window.console.debug = dummy;
+    window.console.log = dummy;
+  }
+  function dummy() {}
+})(false);
+
 var React = require('react');
 
 var RootNode = require('app/views/root_node');
@@ -47,7 +56,6 @@ require('domready')(function() {
 
 function getRoutePath() {
   var pathname = window.location.pathname;
-  // var route_path = pathname.replace(/^\/p/, '');
   return pathname;
 }
 
