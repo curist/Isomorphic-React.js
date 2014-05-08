@@ -8,7 +8,7 @@ var routing = require('app/routing');
 var Promise = require('bluebird');
 
 require('domready')(function() {
-  var router = routing.router;
+  var router = routing.getRouter();
   router.configure({
     notfound: function() {
       console.log('not found');

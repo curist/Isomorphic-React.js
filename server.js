@@ -20,9 +20,10 @@ var SiteNode = require('app/views/site_node');
 
 app.get('/*', function(req, res) {
   var routing = require('app/routing');
-  var router = routing.router;
+  var router = routing.getRouter();
   var pathname = url.parse(req.url).pathname;
 
+  // router configure放這是為了把res, req丟進scope
   router.configure({
     notfound: function() {
       res.end('404', 404);
@@ -34,9 +35,9 @@ app.get('/*', function(req, res) {
       this.promise = deferred.promise;
     },
     on: function() {
-      console.log('on to something');
       this.deferred.resolve();
-      this.promise.then(function(template) {
+      // TODO 準備好properties
+      this.promise.then(function(properties) {
         var template = React.renderComponentToString(SiteNode({
           side: 'server',
           route: pathname
