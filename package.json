@@ -17,7 +17,8 @@
     "gulp-notify": "^1.2.5",
     "gulp-util": "^2.2.14",
     "gulp-livereload": "^1.4.2",
-    "connect-livereload": "^0.4.0"
+    "connect-livereload": "^0.4.0",
+    "gulp-uglify": "^0.2.1"
   },
   "dependencies": {
     "express": "^3.5.2",
