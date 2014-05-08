@@ -9,7 +9,9 @@ module.exports = React.createClass({
   render: function() {
     return (
       <SiteBoilerPlate>
-        <RootNode side={this.props.side} />
+        <RootNode
+          side={this.props.side}
+          route={this.props.route} />
       </SiteBoilerPlate>
     );
   }
