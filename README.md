@@ -1,6 +1,7 @@
 # Install Things
 ``` sh
 npm install -g gulp nodemon
+npm install
 ```
 
 # Start Developing
