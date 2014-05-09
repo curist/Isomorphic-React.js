@@ -7,6 +7,10 @@ var app = express();
 var url = require('url');
 var Promise = require('bluebird');
 
+
+// Using log4js as logger
+require('log4js').replaceConsole();
+
 app.configure('development', function() {
   app.use(require('connect-livereload')());
 });
@@ -15,9 +19,18 @@ app.use(express.compress());
 app.use(express.static(__dirname + '/public'));
 
 
-var React = require('react');
-var SiteNode = require('app/views/site_node');
+var request = require('superagent');
+app.get('/api/news', function(req, res) {
+  request('http://api.ihackernews.com/page')
+    .end(function(err, resp) {
+      res.json(resp.body.items);
+    });
+});
 
+
+var React = require('react');
+var ReactAsync = require('react-async');
+var SiteNode = require('app/views/site_node');
 app.get('/*', function(req, res) {
   var routing = require('app/routing');
   var router = routing.getRouter();
@@ -36,13 +49,14 @@ app.get('/*', function(req, res) {
     },
     on: function() {
       this.deferred.resolve();
-      // TODO 準備好properties
+      // TODO 處理錯誤，promise被reject時...?
       this.promise.then(function(properties) {
-        var template = React.renderComponentToString(SiteNode({
+        ReactAsync.renderComponentToStaticMarkupWithAsyncState(SiteNode({
           side: 'server',
           route: pathname
-        }));
-        res.end(template);
+        }), function(err, template) {
+          res.end(template);
+        });
       });
     }
   });
@@ -50,4 +64,7 @@ app.get('/*', function(req, res) {
   router.dispatch('on', pathname);
 });
 
-app.listen(3000);
+var PORT = process.env.PORT || 80;
+app.listen(PORT, function() {
+  console.log('start serving @ :' + PORT);
+});
