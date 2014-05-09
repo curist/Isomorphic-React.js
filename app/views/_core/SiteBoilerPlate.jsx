@@ -14,7 +14,7 @@ var SiteBoilerPlate = React.createClass({
           <div id="container">
             {this.props.children}
           </div>
-          <script src="/js/front_entry.js" />
+          <script src="/js/bundle.js" />
         </body>
       </html>
     );

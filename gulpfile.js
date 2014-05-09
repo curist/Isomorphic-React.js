@@ -8,7 +8,7 @@ var notify = require('gulp-notify');
 var livereload = require('gulp-livereload');
 
 gulp.task('build', function() {
-  gulp.src('./app/front_entry.js', {read: false})
+  gulp.src('./app/bundle.js', {read: false})
     .pipe(browserify({
       transform: ['reactify'],
       extensions: ['.js', '.jsx'],
