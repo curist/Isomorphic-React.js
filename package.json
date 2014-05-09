@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "NODE_PATH=. NODE_ENV=development nodemon -e js,jsx server.js & gulp",
+    "start-dev": "NODE_PATH=. NODE_ENV=development PORT=3000 nodemon -e js,jsx server.js & gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -31,6 +31,7 @@
     "underscore": "^1.6.0",
     "superagent": "^0.18.0",
     "react-async": "git://github.com/curist/react-async.git#v0.9.3",
-    "fibers": "^1.0.1"
+    "fibers": "^1.0.1",
+    "log4js": "^0.6.14"
   }
 }
