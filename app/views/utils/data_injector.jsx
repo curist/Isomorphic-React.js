@@ -4,10 +4,12 @@ var React = require('react');
 var ReactAsync = require('react-async');
 var Promise = require('bluebird');
 
+// TODO be smart, prevent inject model values to DOM more than once
+
 // take props
-// - modelName  String
-// - setterName String
-// - value      String (JSON.stringified)
+// - model      Object : server : real model instance
+// - getterName String : server
+// - modelName  String : client
 var DataInjector = React.createClass({
   mixins: [ReactAsync.Mixin],
   getInitialStateAsync: function(cb) {
