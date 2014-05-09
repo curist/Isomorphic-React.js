@@ -5,6 +5,7 @@ var ReactAsync = require('react-async');
 var _ = require('underscore');
 
 var NewsAgent = require('app/models/news');
+var NewsDataInjector = NewsAgent.Injector;
 
 var style = {
   'border-radius': '5px',
@@ -36,6 +37,7 @@ var News = React.createClass({
             </div>
           );
         })}
+        <NewsDataInjector />
       </div>
     );
   }

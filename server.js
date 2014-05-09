@@ -21,9 +21,15 @@ app.use(express.static(__dirname + '/public'));
 
 var request = require('superagent');
 app.get('/api/news', function(req, res) {
+  console.log('api being queried!');
   request('http://api.ihackernews.com/page')
     .end(function(err, resp) {
-      res.json(resp.body.items);
+      if(err) {
+        console.log(err);
+        res.json([]);
+      } else {
+        res.json(resp.body.items);
+      }
     });
 });
 

@@ -26,6 +26,8 @@ module.exports = React.createClass({
           <a href="/p/yohoho">/p/yohoho</a><br/>
           <a href="/p/kkthx/bye">/p/kkthx/bye</a><br/>
           <Foo/>
+          <Foo/>
+          <Foo/>
         </div>
         <div className="content" style={style}>
           <News />
