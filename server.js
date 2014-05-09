@@ -15,12 +15,12 @@ app.use(express.compress());
 app.use(express.static(__dirname + '/public'));
 
 
-var request = require('request');
+var request = require('superagent');
 app.get('/api/news', function(req, res) {
-  request('http://api.ihackernews.com/page', function(err, resp, body) {
-    console.log(body);
-    res.json(JSON.parse(body));
-  });
+  request('http://api.ihackernews.com/page')
+    .end(function(err, resp) {
+      res.json(resp.body.items);
+    });
 });
 
 
@@ -45,10 +45,9 @@ app.get('/*', function(req, res) {
     },
     on: function() {
       this.deferred.resolve();
-      // TODO 準備好properties
       // TODO 處理錯誤，promise被reject時...?
       this.promise.then(function(properties) {
-        ReactAsync.renderComponentToStringWithAsyncState(SiteNode({
+        ReactAsync.renderComponentToStaticMarkupWithAsyncState(SiteNode({
           side: 'server',
           route: pathname
         }), function(err, template) {
