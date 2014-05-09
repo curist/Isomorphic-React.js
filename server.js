@@ -7,6 +7,10 @@ var app = express();
 var url = require('url');
 var Promise = require('bluebird');
 
+
+// Using log4js as logger
+require('log4js').replaceConsole();
+
 app.configure('development', function() {
   app.use(require('connect-livereload')());
 });
@@ -60,4 +64,7 @@ app.get('/*', function(req, res) {
   router.dispatch('on', pathname);
 });
 
-app.listen(3000);
+var PORT = process.env.PORT || 80;
+app.listen(PORT, function() {
+  console.log('start serving @ :' + PORT);
+});
