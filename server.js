@@ -40,7 +40,6 @@ app.get('/api/news', function(req, res) {
 });
 
 
-var React = require('react');
 var ReactAsync = require('react-async');
 var SiteNode = require('app/views/site_node');
 app.get('/*', function(req, res) {
@@ -58,15 +57,17 @@ app.get('/*', function(req, res) {
       var deferred = Promise.defer();
       this.deferred = deferred;
       this.promise = deferred.promise;
+
+      // TODO 搞定bluebird的promise timeout
     },
     on: function() {
-      this.deferred.resolve();
       // TODO 處理錯誤，promise被reject時...?
       this.promise.then(function(properties) {
         ReactAsync.renderComponentToStaticMarkupWithAsyncState(SiteNode({
           side: 'server',
           route: pathname
         }), function(err, template) {
+          // TODO 處理錯誤，render component裡有拿非同步資料失敗時...?
           res.send(template);
         });
       });
@@ -80,3 +81,4 @@ var PORT = process.env.PORT || 80;
 app.listen(PORT, function() {
   console.log('start serving @ :' + PORT);
 });
+

@@ -24,7 +24,6 @@ var DataInjector = React.createClass({
 
     } else {
       model.getter().then(function(data) {
-        console.log('data injector got data');
         cb(null, {
           payload_data: JSON.stringify(data)
         });

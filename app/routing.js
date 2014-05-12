@@ -6,13 +6,16 @@ var routes = {
   },
   '/': function() {
     console.log('root?');
+    this.deferred.resolve();
   },
   '/p': {
     on: function() {
       console.log('empty..');
+      this.deferred.resolve();
     },
     '/.*': function() {
       console.log('all matched');
+      this.deferred.resolve();
     }
   }
 };

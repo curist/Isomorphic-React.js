@@ -19,7 +19,6 @@ var News = React.createClass({
   getInitialStateAsync: function(cb) {
     // TODO error 處理
     NewsAgent.getter().then(function(news) {
-      console.log('got news data, going to render!');
       cb(null, {
         news: news
       });
