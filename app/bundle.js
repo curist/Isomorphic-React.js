@@ -33,7 +33,10 @@ require('domready')(function() {
     },
     on: function() {
       console.log('on to something');
-      render();
+      this.promise.then(function() {
+        console.log('resolved');
+        render();
+      });
     }
   });
 
