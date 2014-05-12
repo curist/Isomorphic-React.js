@@ -18,8 +18,8 @@ var News = React.createClass({
   mixins: [ReactAsync.Mixin],
   getInitialStateAsync: function(cb) {
     // TODO error 處理
-    NewsAgent.willGetNews().then(function(news) {
-      console.log('yea?');
+    NewsAgent.getter().then(function(news) {
+      console.log('got news data, going to render!');
       cb(null, {
         news: news
       });
