@@ -2,8 +2,7 @@
 
 var React = require('react');
 
-var Foo = require('app/views/components/foo');
-var News = require('app/views/components/news');
+var NewsList = require('app/views/components/news_list');
 
 var style = {
   'float': 'left',
@@ -14,23 +13,54 @@ var style = {
 
 module.exports = React.createClass({
   render: function() {
-    // TODO give News some props to determine what to search
+    var navBarStyle = {
+      position: 'fixed',
+      zIndex: '100',
+      top: 0,
+      left: 0,
+      right: 0,
+      width: '100%',
+      height: '60px',
+      border: '1px solid black'
+    };
+
+    var contentStyle = {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      left: 0,
+      paddingTop: '60px'
+    };
+
+    var links = [{
+      name: 'home',
+      path: '/'
+    }, {
+      name: 'news',
+      path: '/news'
+    }, {
+      name: 'about',
+      path: '/about'
+    }];
+
     return (
       <div>
-        <div className="side-bar" style={style}>
-          <a href="/">home</a><br/>
-          <p>root node from { this.props.side }</p>
-          <p>current route: { this.props.route }</p>
-          <a href="#/yohoho">#/yohoho</a><br/>
-          <a href="/yohoho">/yohoho</a><br/>
-          <a href="/p/yohoho">/p/yohoho</a><br/>
-          <a href="/p/kkthx/bye">/p/kkthx/bye</a><br/>
-          <Foo/>
-          <Foo/>
-          <Foo/>
+        <div className="nav-bar" style={navBarStyle}>
+          {
+            links.map(function(link, i) {
+              var linkStyle = {
+                display: 'inline-block',
+                margin: '0 15px'
+              };
+              return (
+                <a href={link.path} key={i} style={linkStyle}>{link.name}</a>
+              );
+            })
+          }
         </div>
-        <div className="content" style={style}>
-          <News />
+        <div className="content" style={contentStyle}>
+          {this.props.content}
         </div>
       </div>
     );

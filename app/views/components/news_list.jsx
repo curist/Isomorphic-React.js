@@ -14,7 +14,7 @@ var style = {
   'padding': '8px'
 }
 
-var News = React.createClass({
+var NewsList = React.createClass({
   mixins: [ReactAsync.Mixin],
   getInitialStateAsync: function(cb) {
     // TODO error 處理
@@ -42,5 +42,5 @@ var News = React.createClass({
   }
 });
 
-module.exports = News;
+module.exports = NewsList;
 

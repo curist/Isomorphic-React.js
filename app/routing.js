@@ -2,21 +2,18 @@ var director = require('director');
 
 var routes = {
   before: function() {
-    console.log('before');
   },
   '/': function() {
-    console.log('root?');
-    this.deferred.resolve();
+    var HomePage = require('app/views/pages/home');
+    this.deferred.resolve(HomePage({}));
   },
-  '/p': {
-    on: function() {
-      console.log('empty..');
-      this.deferred.resolve();
-    },
-    '/.*': function() {
-      console.log('all matched');
-      this.deferred.resolve();
-    }
+  '/news': function() {
+    var NewsList = require('app/views/components/news_list');
+    this.deferred.resolve(NewsList({}));
+  },
+  '/about': function() {
+    var AboutPage = require('app/views/pages/about');
+    this.deferred.resolve(AboutPage({}));
   }
 };
 

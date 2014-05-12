@@ -16,7 +16,9 @@ module.exports = React.createClass({
       <SiteBoilerPlate>
         <RootNode
           side={this.props.side}
-          route={this.props.route} />
+          route={this.props.route}
+          content={this.props.content}
+        />
       </SiteBoilerPlate>
     );
   }
