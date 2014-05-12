@@ -4,6 +4,12 @@ require('node-jsx').install({
 
 var express = require('express');
 var app = express();
+
+var env = process.env.NODE_ENV;
+
+var compress = require('compression');
+var serveStatic = require('serve-static');
+
 var url = require('url');
 var Promise = require('bluebird');
 
@@ -11,12 +17,12 @@ var Promise = require('bluebird');
 // Using log4js as logger
 require('log4js').replaceConsole();
 
-app.configure('development', function() {
+if(env == 'development') {
   app.use(require('connect-livereload')());
-});
+}
 
-app.use(express.compress());
-app.use(express.static(__dirname + '/public'));
+app.use(compress());
+app.use(serveStatic (__dirname + '/public'));
 
 
 var request = require('superagent');
@@ -45,7 +51,7 @@ app.get('/*', function(req, res) {
   // router configure放這是為了把res, req丟進scope
   router.configure({
     notfound: function() {
-      res.end('404', 404);
+      res.send('404', 404);
     },
     strict: false,
     before: function() {
@@ -61,7 +67,7 @@ app.get('/*', function(req, res) {
           side: 'server',
           route: pathname
         }), function(err, template) {
-          res.end(template);
+          res.send(template);
         });
       });
     }
