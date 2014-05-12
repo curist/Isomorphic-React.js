@@ -62,10 +62,11 @@ app.get('/*', function(req, res) {
     },
     on: function() {
       // TODO 處理錯誤，promise被reject時...?
-      this.promise.then(function(properties) {
+      this.promise.then(function(component) {
         ReactAsync.renderComponentToStaticMarkupWithAsyncState(SiteNode({
           side: 'server',
-          route: pathname
+          route: pathname,
+          content: component
         }), function(err, template) {
           // TODO 處理錯誤，render component裡有拿非同步資料失敗時...?
           res.send(template);

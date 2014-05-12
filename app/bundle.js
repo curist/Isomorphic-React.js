@@ -33,9 +33,8 @@ require('domready')(function() {
     },
     on: function() {
       console.log('on to something');
-      this.promise.then(function() {
-        console.log('resolved');
-        render();
+      this.promise.then(function(component) {
+        render(component);
       });
     }
   });
@@ -62,10 +61,11 @@ function getRoutePath() {
   return pathname;
 }
 
-function render() {
+function render(component) {
   React.renderComponent(RootNode({
     side: 'client',
-    route: getRoutePath()
+    route: getRoutePath(),
+    content: component
   }), document.getElementById('container'));
 
   console.log('render');
