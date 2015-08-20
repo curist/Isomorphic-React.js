@@ -7,4 +7,5 @@ npm install
 # Start Developing
 ``` sh
 npm run start-dev
+gulp
 ```
